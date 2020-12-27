@@ -12,16 +12,18 @@ class PixelInspector:
             self.img = np.zeros((100,100,3))
     
     def inspect(self, x,y):
-        pixel = 255 * self.img[x, y, :]
+        try:
+            pixel = 255 * self.img[x, y, :]
+        except IndexError:
+            print("Index is out of bound. Please check the image size.")
+        
         return pixel.astype(int)
     
     def getImgSize(self):
         return self.img.shape[:2]
-
-path = os.path.join('./demo', 'stinkbug.png')
-
-try:
-    pi = PixelInspector(path)
-    print(pi.inspect(300, 300))
-except IndexError:
-    print("Index is out of bound. Please check the image size.")
+    
+    @staticmethod
+    def test():
+        path = os.path.join('./demo', 'stinkbug.png')
+        pi = PixelInspector(path)
+        print(pi.inspect(300, 300))
