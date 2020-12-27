@@ -14,12 +14,11 @@ class PixelInspector:
     def inspect(self, x,y):
         pixel = 255 * self.img[x, y, :]
         return pixel.astype(int)
+    
+    def getImgSize(self):
+        return self.img.shape[:2]
 
 path = os.path.join('./demo', 'stinkbug.png')
-# dir_path = '' # A linux style absolute path.
-# dir_path = dir_path.split('/')
-# path = os.path.join(os.sep, dir_path[0], os.sep, *dir_path[1:], 'stinkbug.png')
-# print(path)
 
 try:
     pi = PixelInspector(path)
