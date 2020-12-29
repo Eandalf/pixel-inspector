@@ -29,6 +29,10 @@ class Handlers:
         self.ui_obj['window'].geometry(str(img_size[1]) + 'x'\
                                          + str(img_size[0]))
 
+        # Clear the old image if it exists
+        if 'img_show' in self.ui_obj:
+            self.ui_obj['img_show'].destroy()
+
         # Display the image
         self.ui_obj['img'] = tk.PhotoImage(file=filename)
         self.ui_obj['img_show'] = tk.Label(self.ui_obj['window'],\
