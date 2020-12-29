@@ -23,9 +23,9 @@ class PixelInspector:
             print("No such file or directory.")
             self.img = np.zeros((100,100,3))
     
-    def inspect(self, x,y):
+    def inspect(self, x, y):
         try:
-            pixel = 255 * self.img[x, y, :]
+            pixel = 255 * self.img[y, x, :]
         except IndexError:
             print("Index is out of bound. Please check the image size.")
         
