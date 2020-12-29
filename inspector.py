@@ -23,7 +23,7 @@ class PixelInspector:
         return self.img.shape[:2]
     
     @staticmethod
-    def test():
+    def demo():
         path = os.path.join('./demo', 'stinkbug.png')
         pi = PixelInspector(path)
         print(pi.inspect(300, 300))
