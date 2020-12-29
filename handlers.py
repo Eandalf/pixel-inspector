@@ -19,6 +19,11 @@ class Handlers:
         self.x, self.y = event.x, event.y
         # print('{}, {}'.format(self.x, self.y))
 
+        # Size checking
+        if hasattr(self, 'img_width') and hasattr(self, 'img_height'):
+            if self.x >= self.img_width or self.y >= self.img_height:
+                return None
+
         # Update the position values
         if 'position' in self.ui_obj:
             self.ui_obj['position'].config(text='(' + str(self.x) +\
@@ -56,9 +61,11 @@ class Handlers:
         # Load the inspector
         self.pi = inspector.PixelInspector(filename)
         img_size = self.pi.getImgSize()
+        self.img_width = img_size[0]
+        self.img_height = img_size[1]
         # Resize the window
-        self.ui_obj['window'].geometry(str(img_size[1]) + 'x'\
-                                         + str(img_size[0] + 50))
+        self.ui_obj['window'].geometry(str(self.img_width) + 'x'\
+                                         + str(self.img_height + 50))
 
         # Clear the old image if it exists
         if 'img_show' in self.ui_obj:

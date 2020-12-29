@@ -32,7 +32,7 @@ class PixelInspector:
         return pixel.astype(int)
     
     def getImgSize(self):
-        return self.img.shape[:2]
+        return tuple(reversed(self.img.shape[:2]))
     
     @staticmethod
     def demo():
