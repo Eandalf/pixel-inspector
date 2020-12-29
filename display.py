@@ -31,4 +31,7 @@ filemenu.add_command(label='Exit', command=window.quit)
 menubar.add_cascade(label='File', menu=filemenu)
 window.config(menu=menubar)
 
+# Track the cursor position
+window.bind('<Motion>', h.motion)
+
 window.mainloop()
