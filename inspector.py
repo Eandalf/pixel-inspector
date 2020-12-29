@@ -36,3 +36,6 @@ class PixelInspector:
         path = './demo/stinkbug.png'
         pi = PixelInspector(path)
         print(pi.inspect(300, 300))
+
+if __name__ == '__main__':
+    PixelInspector.demo()
