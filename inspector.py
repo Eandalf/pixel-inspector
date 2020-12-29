@@ -9,6 +9,9 @@ class PixelInspector:
         try:
             # Preprocess the path
             path_converted = path.split('/')
+            if path_converted[-1].split('.')[-1] != 'png':
+                raise NotImplementedError('Only png files are supported.')
+
             if path_converted[0] != '.' and path_converted[0] != '..':
                 path_converted = os.path.join(os.sep, path_converted[0],\
                                              os.sep, *path_converted[1:])

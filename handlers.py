@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
+import tkinter.messagebox as msbox
 
 import inspector
 
@@ -17,8 +18,11 @@ class Handlers:
         filename = askopenfilename()
         # Close the title text
         self.ui_obj['title'].pack_forget()
-        # Show the image
-        self.show_image(filename)
+        try:
+            # Show the image
+            self.show_image(filename)
+        except NotImplementedError as e:
+            msbox.showerror(title='Error', message=e.args[0])
         return None
 
     def show_image(self, filename):
