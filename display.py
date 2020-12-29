@@ -1,47 +1,30 @@
 import os
 import tkinter as tk
-from tkinter.filedialog import askopenfilename
 
-import inspector
+import handlers
 
-# Handlers
-def open_file():
-    filename = askopenfilename()
-    # Close the title text
-    title.pack_forget()
-    # Show the image
-    show_image(filename)
-    return None
-
-def show_image(filename):
-    global img, img_show, pi
-    # Load the inspector
-    pi = inspector.PixelInspector(filename)
-    img_size = pi.getImgSize()
-    # Resize the window
-    window.geometry(str(img_size[1]) + 'x' + str(img_size[0]))
-
-    # Display the image
-    img = tk.PhotoImage(file=filename)
-    img_show = tk.Label(window, image=img)
-    img_show.pack()
-    return None
+# Create the Handlers (a handler manager)
+h = handlers.Handlers()
 
 # Main window
 window = tk.Tk()
 window.title("Pixel Inspector")
 window.geometry('500x500')
+## Register the window object
+h.track(window=window)
 
 # Title text
 title = tk.Label(window, text='Pixel Inspector', bg='green', fg='yellow',\
              font=('Arial', 24, 'bold'), width=300, height=100)
 title.pack()
+## Register the title object
+h.track(title=title)
 
 # Menubar
 menubar = tk.Menu(window)
 ## File
 filemenu = tk.Menu(menubar, tearoff=0)
-filemenu.add_command(label='Open', command=open_file)
+filemenu.add_command(label='Open', command=h.open_file)
 filemenu.add_separator()
 filemenu.add_command(label='Exit', command=window.quit)
 ## Compile the menus
