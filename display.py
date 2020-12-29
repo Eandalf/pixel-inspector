@@ -48,6 +48,4 @@ filemenu.add_command(label='Exit', command=window.quit)
 menubar.add_cascade(label='File', menu=filemenu)
 window.config(menu=menubar)
 
-#show_image('./demo/stinkbug.png')
-
 window.mainloop()
