@@ -4,9 +4,18 @@ import numpy as np
 import matplotlib.image as mpimg
 
 class PixelInspector:
+    # path: A linux style absolute path.
     def __init__(self, path):
         try:
-            self.img = mpimg.imread(path)
+            # Preprocess the path
+            path_converted = path.split('/')
+            if path_converted[0] != '.' and path_converted[0] != '..':
+                path_converted = os.path.join(os.sep, path_converted[0],\
+                                             os.sep, *path_converted[1:])
+            else:
+                path_converted = os.path.join(*path_converted)
+            
+            self.img = mpimg.imread(path_converted)
         except FileNotFoundError:
             print("No such file or directory.")
             self.img = np.zeros((100,100,3))
@@ -24,6 +33,6 @@ class PixelInspector:
     
     @staticmethod
     def demo():
-        path = os.path.join('./demo', 'stinkbug.png')
+        path = './demo/stinkbug.png'
         pi = PixelInspector(path)
         print(pi.inspect(300, 300))

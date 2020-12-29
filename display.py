@@ -16,13 +16,9 @@ def open_file():
 def show_image(filename):
     global img, img_show, pi
     # Load the inspector
-    ## Preprocess the path
-    full_path = filename.split('/')
-    path = os.path.join(os.sep, full_path[0], os.sep, *full_path[1:])
-    ## Create the inspector
-    pi = inspector.PixelInspector(path)
+    pi = inspector.PixelInspector(filename)
     img_size = pi.getImgSize()
-    ## Resize the window
+    # Resize the window
     window.geometry(str(img_size[1]) + 'x' + str(img_size[0]))
 
     # Display the image
