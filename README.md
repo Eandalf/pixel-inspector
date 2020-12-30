@@ -1,6 +1,6 @@
 # pixel-inspector
 
-A simple pixel inspector for images.
+A simple pixel inspector for reading RGB or RGBA pixel values of the images.
 
 ## Requirements
 
@@ -14,6 +14,11 @@ A simple pixel inspector for images.
 
 * Change to the project directory, `python display.py` will launch the GUI interface of this pixel inspector.
   * In the `File` menu, `Open` to load a new image for the inspection, and `Exit` to close the program.
+  * Entry Page
+  * ![Entry Page](./demo/gui_entry.png)
+  * Inspector Page
+  * ![Inspector Page](./demo/gui_inspector.png)
+  * Notice: the position is in (x,y) where x is the horizontal direction and y is the vertical direction, and it counts from (0,0).
 * Use the class `PixelInspector` in `inspector.py` to inspect the pixels with the command line.
   * For example,
   * `python`
